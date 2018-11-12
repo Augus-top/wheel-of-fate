@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Petit+Formal+Script');
+@import url('https://fonts.googleapis.com/css?family=Slabo+27px');
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+:root {
+  --frontOrange: #fdbb2d;
+  --userDarkBlue: #1a2a6c;
+}
+
+.flex-container {
+  display: flex;
+}
+
+.grid-wrapper {
+  display: grid;
+  grid-template-areas: 'header header'
+                       'main main'
+                       'footer footer';
+  background-color: var(--frontOrange);
+  background: linear-gradient(
+                      rgba(0, 0, 0, 0.1),
+                      rgba(0, 0, 0, 0.1)
+                    ),
+                    url(images/front_sunset_background.jpg) no-repeat center center fixed;
+  background-size: cover;
+  grid-template-rows: 2fr 4fr 0.5fr;
+  grid-template-columns: 1fr 1fr;
+  height: 100vh;
+}
+
+h1, h2 {
+  color: white;
+  text-shadow: 1.5px 1.5px 0px black;
+  text-align: center;
+  font-family: 'Slabo 27px', sans-serif;
+}
+
+p {
+  color: white;
+  text-shadow: 1.5px 1.5px 0px black;
+  font-family: Roboto, Arial, Helvetica, sans-serif;
+  /* text-align: center; */
+}
+
+/* ======================================================== */
+
+.header-front {
+  grid-area: header;
+
+  justify-content: center;
+  /* padding-bottom: 2rem; */
+  /* align-items: center; */
+  /* height: 30vh; */
+}
+
+.header-front h1 {
+  font-size: 5rem;
+  margin-top: 1rem;
+  font-family: 'Petit Formal Script', cursive;
+}
+
+/* ======================================================== */
+
+.main-front {
+  /* background-color: var(--frontOrange);
+  background-image: linear-gradient(to bottom, var(--frontOrange), #b21f1f, var(--userDarkBlue)); */
+  grid-area: main;
+  display: flex;
+  justify-content: center;
+  /* align-items: center; */
+  /* height: 30vh; */
+}
+
+.main-front img {
+  height: 18rem;
+  width: auto;
+  margin-top: 1rem;
+}
+
+
+/* ======================================================== */
+/* This pattern is downloaded from www.subtlepatterns.com  */
+/* If you need more, that's where to get'em. */
+/* ======================================================== */
+.footer {
+  grid-area: footer;
+  background: black url(images/binding_dark.png) repeat 0 0;
+}
+
+.footer a {
+  margin: auto;
+  transition: all .2s ease-in-out;
+}
+
+.footer a:hover {
+  /* transform: scale(1.1);  */
+}
+
+/* ======================================================== */
+
+@media screen and (max-width: 500px), (min-width: 1400px) {
+  .header-front h1 {
+    font-size: 8vw;
+  }
+}
+
+@media screen and (max-width: 500px){
+  
+  .header-front {
+    background-position: 80% 80%;
+  }
+
+  .grid-wrapper {
+    display: grid;
+    grid-template-areas: 'header'
+                         'main'
+                         'footer';
+    grid-template-rows: 1fr 2fr 0.11fr;
+    grid-template-columns: 1fr;
+  }
+
+  .navbar h1 {
+    visibility: hidden;
+  }
+
+  .navbar-search {
+    margin-top: -7vh;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .navbar-search input{
+    font-size: 1rem;
+    width: 75vw;
+  }
+
+  .main-front {
+    grid-template-areas: 'title'
+                        'first-middle'
+                        'second-middle'
+                        'bottom'
+                        'search';
+    grid-template-rows: 0.4fr 1fr 1fr 0.4fr 0.4fr;
+    grid-template-columns: 1fr;
+  } 
+  .main-first-middle, .main-second-middle {
+    max-width: 90vw;
+    text-align: center;
+  }
+
+  .main-front h1 {
+    font-size: 8vw;
+  }
+  .main-front h2 {
+    font-size: 6vw;
+  }
+  .main-front p {
+    font-size: 4vw;
+  }
+
+}

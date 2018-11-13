@@ -4,6 +4,10 @@ import { getAnimes, getYoutubeVideo } from '../api/apiHandler';
 import cardImage from '../images/cardblue.png';
 import anime from '../images/anime.jpg';
 
+const sleep = (ms) => {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 export default class FrontCard extends Component {
 
   state = {
@@ -27,6 +31,7 @@ export default class FrontCard extends Component {
   async prepareAnimeYoutubeVideo(anime) {
     const videoId = await getYoutubeVideo(anime.title);
     if (videoId === 'error') return this.props.errorActivator();
+    await sleep(500);
     this.setState({animationState: 'finished'});
     this.props.videoActivator(videoId);
   }

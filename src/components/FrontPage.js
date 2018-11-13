@@ -53,7 +53,7 @@ export default class FrontPage extends Component {
   render() {
     return (
       <div className='grid-wrapper'>
-        <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='10'/>
+        <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='50'/>
         <FrontCard videoActivator={this.props.videoActivator}/>
         <Footer/>
       </div>

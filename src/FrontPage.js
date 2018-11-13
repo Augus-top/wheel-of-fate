@@ -1,16 +1,27 @@
 import React, { Component } from 'react';
 
-// import { Search, Footer } from './common';
+import { getAnimes } from './apiHandler';
 import gitIcon from './images/git_icon.svg';
 import cardImage from './images/cardblue.png';
-import cardImage2 from './images/cardred.png';
+import anime from './images/anime.jpg';
 
 const frontHeaderMsg = 'The Wheel of Fate is Turning';
 
 class FrontCard extends Component {
 
   state = {
-    animationRunning: true
+    animationRunning: true,
+    frontImg: anime
+  }
+
+  componentDidMount() {
+    this.prepareAnimes();
+  }
+
+  async prepareAnimes() {
+    const animes = await getAnimes();
+    console.log(animes);
+    this.setState({animes: animes});
   }
 
   getImgAngle(img) {
@@ -25,17 +36,17 @@ class FrontCard extends Component {
   }
 
   imageClick(e) {
-    if(!this.state.animationRunning) return;
+    if(!this.state.animationRunning || this.state.animes === undefined) return;
     const img = e.target;
     const angle = this.getImgAngle(img);
-    console.log(angle);    
-    this.setState({animationRunning: false});
+    const choiced = Math.floor(angle / 60);
+    console.log(choiced);
+    this.setState({animationRunning: false, frontImg: this.state.animes[choiced].img});
     img.addEventListener('animationiteration', () => {
       img.classList.toggle('spinning');
       const div = document.getElementsByClassName('main-front');
       div[0].classList.toggle('flipper');
       div[0].classList.toggle('is-flipped');
-      console.log('opa');
     });
   } 
 
@@ -43,7 +54,7 @@ class FrontCard extends Component {
     return(
       <main className='main-front'>
         <img className='card cardBack spinning' src={cardImage} onClick={(e) => this.imageClick(e)} alt='Card'/>
-        <img className='card cardFront' src={cardImage2} onClick={(e) => this.imageClick(e)} alt='Card'/>
+        <img className='card cardFront' src={this.state.frontImg} onClick={(e) => this.imageClick(e)} alt='Card'/>
       </main>
     );
   }
@@ -96,7 +107,7 @@ export default class FrontPage extends Component {
   render() {
     return (
       <div className='grid-wrapper'>
-        <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='30'/>
+        <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='10'/>
         <FrontCard/>
         <Footer/>
       </div>

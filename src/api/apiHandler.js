@@ -19,7 +19,7 @@ export const getAnimes = async () => {
   const animePage = generateRandomInteger(1, 10);
   const apiPath = 'https://api.jikan.moe/v3/top/anime/' + animePage + '/tv';
   const response = await sendAPIRequest(apiPath);
-  if (response === 'error') return;
+  if (response === 'error') return response;
   const animes = [];
   while (animes.length !== 6) {
     const pos = generateRandomInteger(0, 49);
@@ -37,6 +37,7 @@ export const getYoutubeVideo = async (animeTitle) => {
   };
   try {
     const res = await searchYoutube('AIzaSyBCubdrUmUlYrkueAyYwnm6KtURKcoLCz8', options);
+    if (res === 'error') return res;
     return res.items[0].id.videoId;
   } catch (error) {
     console.log('Youtube API Error');

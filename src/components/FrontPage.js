@@ -50,11 +50,20 @@ export const Footer = () => {
 
 export default class FrontPage extends Component {
 
+  state = {
+    error: false
+  }
+
+  activateError = () => this.setState({error: true});
+
   render() {
+    if (this.state.error) {
+      return (<div className='error'></div>);
+    }
     return (
       <div className='grid-wrapper'>
         <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='50'/>
-        <FrontCard videoActivator={this.props.videoActivator}/>
+        <FrontCard videoActivator={this.props.videoActivator} errorActivator={this.activateError}/>
         <Footer/>
       </div>
     );

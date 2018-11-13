@@ -17,6 +17,7 @@ export default class FrontCard extends Component {
 
   async prepareAnimes() {
     const animes = await getAnimes();
+    if (animes === 'error') return this.props.errorActivator();
     console.log(animes);
     this.setState({animes: animes});
     const el = document.getElementsByClassName('cardBack');
@@ -25,6 +26,7 @@ export default class FrontCard extends Component {
 
   async prepareAnimeYoutubeVideo(anime) {
     const videoId = await getYoutubeVideo(anime.title);
+    if (videoId === 'error') return this.props.errorActivator();
     this.setState({animationState: 'finished'});
     this.props.videoActivator(videoId);
   }

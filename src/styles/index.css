@@ -21,7 +21,6 @@
                       rgba(0, 0, 0, 0.1),
                       rgba(0, 0, 0, 0.1)
                     ),
-                    /* url(../images/front_sunset_background.jpg) no-repeat center center fixed; */
                     url(../images/back.png) no-repeat center center fixed;
   background-size: cover;
   grid-template-rows: 2fr 4fr 0.5fr;
@@ -126,6 +125,18 @@ p {
 
 /* ======================================================== */
 
+.error {
+  background: linear-gradient(
+                      rgba(0, 0, 0, 0.1),
+                      rgba(0, 0, 0, 0.1)
+                    ),
+                    url(../images/error.png) no-repeat center center fixed;
+  background-size: cover;
+  height: 100vh;
+}
+
+/* ======================================================== */
+
 @media screen and (max-width: 500px), (min-width: 1400px) {
   .header-front h1 {
     font-size: 8vw;
@@ -136,6 +147,16 @@ p {
   
   .header-front {
     background-position: 80% 80%;
+  }
+
+  .error {
+    background: linear-gradient(
+                        rgba(0, 0, 0, 0.1),
+                        rgba(0, 0, 0, 0.1)
+                      ),
+                      url(../images/ded.jpg) no-repeat center center fixed;
+    background-size: contain;
+    height: 100vh;
   }
 
   .grid-wrapper {

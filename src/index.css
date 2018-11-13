@@ -67,16 +67,36 @@ p {
   grid-area: main;
   display: flex;
   justify-content: center;
+  perspective: 600px;
+  /* transition: transform 1s;
+  transform-style: preserve-3d; */
   /* align-items: center; */
-  /* height: 30vh; */
 }
 
 .main-front img {
+  position: absolute;
   height: 18rem;
   width: auto;
   margin-top: 1rem;
+  cursor: pointer;
+  /* animation:spin 0.5s linear infinite; */
+  animation:spin 5s linear infinite;
 }
 
+.card {
+  backface-visibility: hidden;
+}
+
+.cardFront {
+  visibility: hidden;
+  transform: rotateY( 180deg );
+}
+
+.is-flipped {
+  transform: rotateY(180deg);
+}
+
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
 
 /* ======================================================== */
 /* This pattern is downloaded from www.subtlepatterns.com  */
@@ -84,7 +104,7 @@ p {
 /* ======================================================== */
 .footer {
   grid-area: footer;
-  background: black url(images/binding_dark.png) repeat 0 0;
+  /* background: black url(images/binding_dark.png) repeat 0 0; */
 }
 
 .footer a {

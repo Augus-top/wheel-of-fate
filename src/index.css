@@ -68,8 +68,6 @@ p {
   display: flex;
   justify-content: center;
   perspective: 600px;
-  /* transition: transform 1s;
-  transform-style: preserve-3d; */
   /* align-items: center; */
 }
 
@@ -79,8 +77,16 @@ p {
   width: auto;
   margin-top: 1rem;
   cursor: pointer;
-  /* animation:spin 0.5s linear infinite; */
-  animation:spin 5s linear infinite;
+}
+
+.spinning {
+  animation: spin 0.5s linear infinite;
+  /* animation: spin 5s linear infinite; */
+}
+
+.flipper {
+  transition: transform 1s;
+  transform-style: preserve-3d;
 }
 
 .card {
@@ -88,7 +94,7 @@ p {
 }
 
 .cardFront {
-  visibility: hidden;
+  /* visibility: hidden; */
   transform: rotateY( 180deg );
 }
 

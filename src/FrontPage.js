@@ -9,8 +9,13 @@ const frontHeaderMsg = 'The Wheel of Fate is Turning';
 
 class FrontCard extends Component {
 
+  state = {
+    animationRunning: true
+  }
+
   getImgAngle(img) {
     const matrix = window.getComputedStyle(img, null).getPropertyValue('transform');
+    if(matrix === 'none') return;
     const values = matrix.split('(')[1].split(')')[0].split(',');
     const a = values[0];
     const b = values[1];
@@ -20,24 +25,24 @@ class FrontCard extends Component {
   }
 
   imageClick(e) {
-    console.log('Click');
+    if(!this.state.animationRunning) return;
     const img = e.target;
     const angle = this.getImgAngle(img);
-    console.log(angle);
-    // const image = e.target;
-    // image.classList.toggle('is-flipped');
-    // console.log(image);
-    // const front = document.querySelector('.cardFront');
-    // front.classList.toggle('is-flipped');
-    // const back = document.querySelector('.main-front');
-    // back.classList.toggle('is-flipped');
-    // console.log(card);
+    console.log(angle);    
+    this.setState({animationRunning: false});
+    img.addEventListener('animationiteration', () => {
+      img.classList.toggle('spinning');
+      const div = document.getElementsByClassName('main-front');
+      div[0].classList.toggle('flipper');
+      div[0].classList.toggle('is-flipped');
+      console.log('opa');
+    });
   } 
 
   render() {
     return(
       <main className='main-front'>
-        <img className='card cardBack' src={cardImage} onClick={(e) => this.imageClick(e)} alt='Card'/>
+        <img className='card cardBack spinning' src={cardImage} onClick={(e) => this.imageClick(e)} alt='Card'/>
         <img className='card cardFront' src={cardImage2} onClick={(e) => this.imageClick(e)} alt='Card'/>
       </main>
     );

@@ -76,7 +76,7 @@ p {
   height: 18rem;
   width: auto;
   margin-top: 1rem;
-  cursor: pointer;
+  
 }
 
 .spinning {
@@ -96,6 +96,7 @@ p {
 .cardFront {
   /* visibility: hidden; */
   transform: rotateY( 180deg );
+  cursor: pointer;
 }
 
 .is-flipped {

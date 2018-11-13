@@ -1,75 +1,9 @@
 import React, { Component } from 'react';
 
-import { getAnimes, getYoutubeVideo } from '../api/apiHandler';
+import FrontCard from './FrontCard';
 import gitIcon from '../images/git_icon.svg';
-import cardImage from '../images/cardblue.png';
-import anime from '../images/anime.jpg';
 
 const frontHeaderMsg = 'The Wheel of Fate is Turning';
-
-class FrontCard extends Component {
-
-  state = {
-    animationRunning: true,
-    frontImg: anime
-  }
-
-  componentDidMount() {
-    this.prepareAnimes();
-  }
-
-  async prepareAnimes() {
-    const animes = await getAnimes();
-    console.log(animes);
-    this.setState({animes: animes});
-  }
-
-  async prepareAnimeYoutubeVideo(anime) {
-    const videoId = await getYoutubeVideo(anime.title);
-    this.props.videoActivator(videoId);
-  }
-
-  getImgAngle(img) {
-    const matrix = window.getComputedStyle(img, null).getPropertyValue('transform');
-    if(matrix === 'none') return;
-    const values = matrix.split('(')[1].split(')')[0].split(',');
-    const a = values[0];
-    const b = values[1];
-    let angle = Math.round(Math.atan2(b, a) * (180 / Math.PI));
-    if (angle < 0) angle = 360 + angle; 
-    return angle;
-  }
-
-  endSpinningAnimation(img, anime) {
-    img.addEventListener('animationiteration', () => {
-      img.classList.toggle('spinning');
-      const div = document.getElementsByClassName('main-front');
-      div[0].classList.toggle('flipper');
-      div[0].classList.toggle('is-flipped');
-      this.prepareAnimeYoutubeVideo(anime);
-    });
-  }
-
-  imageClick(e) {
-    if(!this.state.animationRunning || this.state.animes === undefined) return;
-    const img = e.target;
-    const angle = this.getImgAngle(img);
-    const choiced = Math.floor(angle / 60);
-    const anime = this.state.animes[choiced];
-    console.log(choiced);
-    this.setState({animationRunning: false, frontImg: anime.img});
-    this.endSpinningAnimation(img, anime);
-  } 
-
-  render() {
-    return(
-      <main className='main-front'>
-        <img className='card cardBack spinning' src={cardImage} onClick={(e) => this.imageClick(e)} alt='Card'/>
-        <img className='card cardFront' src={this.state.frontImg} onClick={(e) => this.imageClick(e)} alt='Card'/>
-      </main>
-    );
-  }
-}
 
 class FrontHeader extends Component {
   state = {

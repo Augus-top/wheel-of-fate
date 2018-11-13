@@ -3,13 +3,17 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "node-sass": "^4.10.0",
     "normalize.css": "^8.0.1",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
+    "react-modal-video": "^1.2.1",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "1.1.1",
+    "react-scripts": "2.0.3",
+    "react-transition-group": "^2.5.0",
     "request": "^2.88.0",
-    "request-promise": "^4.2.2"
+    "request-promise": "^4.2.2",
+    "youtube-api-v3-search": "^1.1.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -17,5 +21,10 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "proxy": "http://localhost:3030/api"
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }

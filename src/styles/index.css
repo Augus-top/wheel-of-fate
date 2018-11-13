@@ -21,7 +21,7 @@
                       rgba(0, 0, 0, 0.1),
                       rgba(0, 0, 0, 0.1)
                     ),
-                    url(images/front_sunset_background.jpg) no-repeat center center fixed;
+                    url(../images/front_sunset_background.jpg) no-repeat center center fixed;
   background-size: cover;
   grid-template-rows: 2fr 4fr 0.5fr;
   grid-template-columns: 1fr 1fr;
@@ -110,7 +110,7 @@ p {
 /* ======================================================== */
 .footer {
   grid-area: footer;
-  /* background: black url(images/binding_dark.png) repeat 0 0; */
+  /* background: black url(../images/binding_dark.png) repeat 0 0; */
 }
 
 .footer a {

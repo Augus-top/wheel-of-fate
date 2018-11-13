@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import { getAnimes } from './apiHandler';
-import gitIcon from './images/git_icon.svg';
-import cardImage from './images/cardblue.png';
-import anime from './images/anime.jpg';
+import { getAnimes, getYoutubeVideo } from '../api/apiHandler';
+import gitIcon from '../images/git_icon.svg';
+import cardImage from '../images/cardblue.png';
+import anime from '../images/anime.jpg';
 
 const frontHeaderMsg = 'The Wheel of Fate is Turning';
 
@@ -24,6 +24,11 @@ class FrontCard extends Component {
     this.setState({animes: animes});
   }
 
+  async prepareAnimeYoutubeVideo(anime) {
+    const videoId = await getYoutubeVideo(anime.title);
+    this.props.videoActivator(videoId);
+  }
+
   getImgAngle(img) {
     const matrix = window.getComputedStyle(img, null).getPropertyValue('transform');
     if(matrix === 'none') return;
@@ -35,19 +40,25 @@ class FrontCard extends Component {
     return angle;
   }
 
-  imageClick(e) {
-    if(!this.state.animationRunning || this.state.animes === undefined) return;
-    const img = e.target;
-    const angle = this.getImgAngle(img);
-    const choiced = Math.floor(angle / 60);
-    console.log(choiced);
-    this.setState({animationRunning: false, frontImg: this.state.animes[choiced].img});
+  endSpinningAnimation(img, anime) {
     img.addEventListener('animationiteration', () => {
       img.classList.toggle('spinning');
       const div = document.getElementsByClassName('main-front');
       div[0].classList.toggle('flipper');
       div[0].classList.toggle('is-flipped');
+      this.prepareAnimeYoutubeVideo(anime);
     });
+  }
+
+  imageClick(e) {
+    if(!this.state.animationRunning || this.state.animes === undefined) return;
+    const img = e.target;
+    const angle = this.getImgAngle(img);
+    const choiced = Math.floor(angle / 60);
+    const anime = this.state.animes[choiced];
+    console.log(choiced);
+    this.setState({animationRunning: false, frontImg: anime.img});
+    this.endSpinningAnimation(img, anime);
   } 
 
   render() {
@@ -104,11 +115,12 @@ export const Footer = () => {
 };
 
 export default class FrontPage extends Component {
+
   render() {
     return (
       <div className='grid-wrapper'>
         <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='10'/>
-        <FrontCard/>
+        <FrontCard videoActivator={this.props.videoActivator}/>
         <Footer/>
       </div>
     );

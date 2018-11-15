@@ -1,9 +1,27 @@
 import React, { Component } from 'react';
 
+import { getAnimes } from '../api/apiHandler';
 import FrontCard from './FrontCard';
 import gitIcon from '../images/git_icon.svg';
 
 const frontHeaderMsg = 'The Wheel of Fate is Turning';
+
+const FrontLoader = (props) => {
+  return (
+    <section class="loader">
+      <div class="spinner">
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+        <i></i>
+      </div>
+      <h1>Loading</h1>
+    </section>
+  );
+};
 
 class FrontHeader extends Component {
   state = {
@@ -40,7 +58,7 @@ class FrontHeader extends Component {
   }
 }
 
-export const Footer = () => {
+const Footer = () => {
   return (
     <footer className='flex-container footer'>
       <a href='https://github.com/Augus-top/wheel-of-fate'><img src={gitIcon} alt='Git Page'/></a>
@@ -54,16 +72,29 @@ export default class FrontPage extends Component {
     error: false
   }
 
+  componentDidMount() {
+    this.prepareAnimes();
+  }
+
+  async prepareAnimes() {
+    const animes = await getAnimes();
+    if (animes === 'error') return this.errorActivator();
+    this.setState({animes: animes});
+  }
+
   activateError = () => this.setState({error: true});
 
   render() {
     if (this.state.error) {
       return (<div className='error'></div>);
     }
+    if (this.state.animes === undefined) {
+      return (<FrontLoader/>);
+    }
     return (
       <div className='grid-wrapper'>
         <FrontHeader headerMsg={frontHeaderMsg} typingSpeed='50'/>
-        <FrontCard videoActivator={this.props.videoActivator} errorActivator={this.activateError}/>
+        <FrontCard loadedAnimes={this.state.animes} videoActivator={this.props.videoActivator} errorActivator={this.activateError}/>
         <Footer/>
       </div>
     );

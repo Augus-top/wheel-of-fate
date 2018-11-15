@@ -5,6 +5,7 @@ import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import 'normalize.css';
 import './styles/index.css';
+import './styles/loader.css';
 import './styles/modal-video.scss';
 
 ReactDOM.render(

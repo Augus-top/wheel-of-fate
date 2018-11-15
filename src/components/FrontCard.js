@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import { getAnimes, getYoutubeVideo } from '../api/apiHandler';
 import cardImage from '../images/cardblue.png';
-import anime from '../images/anime.jpg';
+import animeBlankImg from '../images/anime.jpg';
 
 const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -12,20 +12,12 @@ export default class FrontCard extends Component {
 
   state = {
     animationState: 'running',
-    frontImg: anime
+    frontImg: animeBlankImg,
+    animes: null
   }
 
   componentDidMount() {
-    this.prepareAnimes();
-  }
-
-  async prepareAnimes() {
-    const animes = await getAnimes();
-    if (animes === 'error') return this.props.errorActivator();
-    console.log(animes);
-    this.setState({animes: animes});
-    const el = document.getElementsByClassName('cardBack');
-    el[0].style.cursor='pointer';
+    this.setState({animes: this.props.loadedAnimes});
   }
 
   async prepareAnimeYoutubeVideo(anime) {
@@ -69,7 +61,7 @@ export default class FrontCard extends Component {
       div[0].removeEventListener('transitionend', endFlip);
       const img = document.getElementsByClassName('cardBack');
       img[0].classList.toggle('spinning');
-      this.setState({animationState: 'running', frontImg: anime});
+      this.setState({animationState: 'running', frontImg: animeBlankImg});
     };
     div[0].addEventListener('transitionend', endFlip);
   }

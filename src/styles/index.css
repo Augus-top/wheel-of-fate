@@ -76,7 +76,6 @@ p {
   height: 18rem;
   width: auto;
   margin-top: 1rem;
-  
 }
 
 .spinning {
@@ -91,11 +90,11 @@ p {
 
 .card {
   backface-visibility: hidden;
+  cursor: pointer;
 }
 
 .cardFront {
-  transform: rotateY( 180deg );
-  cursor: pointer;
+  transform: rotateY( 180deg );  
   /* border: 1px solid #021a40; */
 }
 
@@ -119,10 +118,6 @@ p {
   transition: all .2s ease-in-out;
 }
 
-.footer a:hover {
-  /* transform: scale(1.1);  */
-}
-
 /* ======================================================== */
 
 .error {
@@ -137,14 +132,12 @@ p {
 
 /* ======================================================== */
 
-@media screen and (max-width: 500px), (min-width: 1400px) {
+@media screen and (max-width: 500px){
+  
   .header-front h1 {
     font-size: 8vw;
   }
-}
 
-@media screen and (max-width: 500px){
-  
   .header-front {
     background-position: 80% 80%;
   }
@@ -166,45 +159,6 @@ p {
                          'footer';
     grid-template-rows: 1fr 2fr 0.11fr;
     grid-template-columns: 1fr;
-  }
-
-  .navbar h1 {
-    visibility: hidden;
-  }
-
-  .navbar-search {
-    margin-top: -7vh;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .navbar-search input{
-    font-size: 1rem;
-    width: 75vw;
-  }
-
-  .main-front {
-    grid-template-areas: 'title'
-                        'first-middle'
-                        'second-middle'
-                        'bottom'
-                        'search';
-    grid-template-rows: 0.4fr 1fr 1fr 0.4fr 0.4fr;
-    grid-template-columns: 1fr;
-  } 
-  .main-first-middle, .main-second-middle {
-    max-width: 90vw;
-    text-align: center;
-  }
-
-  .main-front h1 {
-    font-size: 8vw;
-  }
-  .main-front h2 {
-    font-size: 6vw;
-  }
-  .main-front p {
-    font-size: 4vw;
   }
 
 }

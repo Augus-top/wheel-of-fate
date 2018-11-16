@@ -20,23 +20,23 @@ self.__precacheManifest = [
     "url": "/wheel-of-fate/static/js/runtime~main.df52a23e.js"
   },
   {
-    "revision": "60c4ab44c0350b8545c6",
-    "url": "/wheel-of-fate/static/js/main.60c4ab44.chunk.js"
+    "revision": "9272226738b1df7d3962",
+    "url": "/wheel-of-fate/static/js/main.92722267.chunk.js"
   },
   {
-    "revision": "8a93a9ed990c448de98d",
-    "url": "/wheel-of-fate/static/js/1.8a93a9ed.chunk.js"
+    "revision": "2928ebe4f46889c6ed77",
+    "url": "/wheel-of-fate/static/js/1.2928ebe4.chunk.js"
   },
   {
-    "revision": "60c4ab44c0350b8545c6",
-    "url": "/wheel-of-fate/static/css/main.d353dcdf.chunk.css"
+    "revision": "9272226738b1df7d3962",
+    "url": "/wheel-of-fate/static/css/main.accded8d.chunk.css"
   },
   {
-    "revision": "8a93a9ed990c448de98d",
+    "revision": "2928ebe4f46889c6ed77",
     "url": "/wheel-of-fate/static/css/1.50c358a6.chunk.css"
   },
   {
-    "revision": "41d060bdbe3f00a5652b2731e0b69993",
+    "revision": "24bf60a86cbe91f3fae964c27e724c4b",
     "url": "/wheel-of-fate/index.html"
   }
 ];

@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/wheel-of-fate/precache-manifest.e86972a8a38a35d44a306a1c0f530813.js"
+  "/wheel-of-fate/precache-manifest.60c0095b9500e890c724cb99bea7c0b3.js"
 );
 
 workbox.clientsClaim();

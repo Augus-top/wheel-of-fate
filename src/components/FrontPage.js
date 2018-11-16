@@ -8,8 +8,8 @@ const frontHeaderMsg = 'The Wheel of Fate is Turning';
 
 const FrontLoader = (props) => {
   return (
-    <section class="loader">
-      <div class="spinner">
+    <section className="loader">
+      <div className="spinner">
         <i></i>
         <i></i>
         <i></i>

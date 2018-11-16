@@ -132,6 +132,12 @@ p {
 
 /* ======================================================== */
 
+@media screen and (max-width: 1020px){
+  .error {
+    background-size: contain;
+  }
+}
+
 @media screen and (max-width: 500px){
   
   .header-front h1 {

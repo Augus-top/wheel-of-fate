@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 
-import { getAnimes, getYoutubeVideo } from '../api/apiHandler';
+import { getwheelAnimes, getYoutubeVideo, generateRandomInteger, getAnimes } from '../api/apiHandler';
 import cardImage from '../images/cardblue.png';
 import animeBlankImg from '../images/anime.jpg';
+
+const MINIMUM_OF_LOADED_ANIMES = 15;
 
 const sleep = (ms) => {
   return new Promise(resolve => setTimeout(resolve, ms));
@@ -13,11 +15,34 @@ export default class FrontCard extends Component {
   state = {
     animationState: 'running',
     frontImg: animeBlankImg,
-    animes: null
+    wheelAnimes: [],
+    loadedAnimes: []
   }
 
   componentDidMount() {
-    this.setState({animes: this.props.loadedAnimes});
+    this.prepareWheelAnimes()
+  }
+
+  prepareWheelAnimes() {
+    const animes = [];
+    const possibleAnimes = this.props.loadedAnimes;
+    while (animes.length !== 6) {
+      const pos = generateRandomInteger(0, possibleAnimes.length - 1);
+      const picked = possibleAnimes[pos];
+      possibleAnimes.splice(pos, 1);
+      animes.push(picked);
+    }
+    this.setState({wheelAnimes: animes, loadedAnimes: possibleAnimes});
+  }
+
+  async refillAnimes() {
+    const refillPos = generateRandomInteger(0, this.state.loadedAnimes.length - 1);
+    this.state.wheelAnimes.push(this.state.loadedAnimes[refillPos]);
+    this.state.loadedAnimes.splice(refillPos, 1);
+    if (this.state.loadedAnimes.length <= MINIMUM_OF_LOADED_ANIMES) {
+      const newAnimes = await getAnimes();
+      this.setState({loadedAnimes: newAnimes});
+    }
   }
 
   async prepareAnimeYoutubeVideo(anime) {
@@ -67,14 +92,16 @@ export default class FrontCard extends Component {
   }
 
   imageClick(e) {
-    if (this.state.animationState === 'stopping' || this.state.animes === undefined) return;
+    if (this.state.animationState === 'stopping' || this.state.wheelAnimes.length !== 6) return;
     if (this.state.animationState === 'finished') return this.restartSpin();
     const img = e.target;
     const angle = this.getImgAngle(img);
     const choiced = Math.floor(angle / 60);
-    const anime = this.state.animes[choiced];
+    const anime = this.state.wheelAnimes[choiced];
+    this.state.wheelAnimes.splice(choiced, 1);
     console.log('choiced number ' + choiced);
-    this.setState({animationState: 'stopping', frontImg: anime.img});
+    this.setState({animationState: 'stopping', frontImg: anime.image_url});
+    this.refillAnimes();
     this.endSpinningAnimation(img, anime);
   } 
 

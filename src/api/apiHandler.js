@@ -30,7 +30,7 @@ export const getYoutubeVideo = async (animeTitle) => {
     type: 'video'
   };
   try {
-    const res = await searchYoutube('AIzaSyBCubdrUmUlYrkueAyYwnm6KtURKcoLCz8', options);
+    const res = await searchYoutube('AIzaSyA-H_VzliQz91FwmvKsMmmqkUUzbPJnKYk', options);
     if (res === 'error') return res;
     return res.items[0].id.videoId;
   } catch (error) {

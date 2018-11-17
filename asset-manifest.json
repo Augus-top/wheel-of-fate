@@ -1,18 +1,18 @@
 {
   "main.css": "/wheel-of-fate/static/css/main.accded8d.chunk.css",
-  "main.js": "/wheel-of-fate/static/js/main.92722267.chunk.js",
-  "main.js.map": "/wheel-of-fate/static/js/main.92722267.chunk.js.map",
+  "main.js": "/wheel-of-fate/static/js/main.b15b2d10.chunk.js",
+  "main.js.map": "/wheel-of-fate/static/js/main.b15b2d10.chunk.js.map",
   "static/css/1.50c358a6.chunk.css": "/wheel-of-fate/static/css/1.50c358a6.chunk.css",
   "static/js/1.2928ebe4.chunk.js": "/wheel-of-fate/static/js/1.2928ebe4.chunk.js",
   "static/js/1.2928ebe4.chunk.js.map": "/wheel-of-fate/static/js/1.2928ebe4.chunk.js.map",
   "runtime~main.js": "/wheel-of-fate/static/js/runtime~main.df52a23e.js",
   "runtime~main.js.map": "/wheel-of-fate/static/js/runtime~main.df52a23e.js.map",
   "static/media/cardblue.png": "/wheel-of-fate/static/media/cardblue.d5c52a45.png",
-  "static/media/index.css": "/wheel-of-fate/static/media/back.21ec86ea.jpg",
+  "static/media/index.css": "/wheel-of-fate/static/media/error.fd0a7a21.png",
   "static/media/git_icon.svg": "/wheel-of-fate/static/media/git_icon.023263a0.svg",
   "static/css/main.accded8d.chunk.css.map": "/wheel-of-fate/static/css/main.accded8d.chunk.css.map",
   "static/css/1.50c358a6.chunk.css.map": "/wheel-of-fate/static/css/1.50c358a6.chunk.css.map",
   "index.html": "/wheel-of-fate/index.html",
-  "precache-manifest.60c0095b9500e890c724cb99bea7c0b3.js": "/wheel-of-fate/precache-manifest.60c0095b9500e890c724cb99bea7c0b3.js",
+  "precache-manifest.e89721fdc82665dbfeffc5ccd1fac170.js": "/wheel-of-fate/precache-manifest.e89721fdc82665dbfeffc5ccd1fac170.js",
   "service-worker.js": "/wheel-of-fate/service-worker.js"
 }

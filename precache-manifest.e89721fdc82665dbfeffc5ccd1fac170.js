@@ -20,15 +20,15 @@ self.__precacheManifest = [
     "url": "/wheel-of-fate/static/js/runtime~main.df52a23e.js"
   },
   {
-    "revision": "9272226738b1df7d3962",
-    "url": "/wheel-of-fate/static/js/main.92722267.chunk.js"
+    "revision": "b15b2d103badc866c482",
+    "url": "/wheel-of-fate/static/js/main.b15b2d10.chunk.js"
   },
   {
     "revision": "2928ebe4f46889c6ed77",
     "url": "/wheel-of-fate/static/js/1.2928ebe4.chunk.js"
   },
   {
-    "revision": "9272226738b1df7d3962",
+    "revision": "b15b2d103badc866c482",
     "url": "/wheel-of-fate/static/css/main.accded8d.chunk.css"
   },
   {
@@ -36,7 +36,7 @@ self.__precacheManifest = [
     "url": "/wheel-of-fate/static/css/1.50c358a6.chunk.css"
   },
   {
-    "revision": "24bf60a86cbe91f3fae964c27e724c4b",
+    "revision": "508f562b44af8387db9df5771b5f30b0",
     "url": "/wheel-of-fate/index.html"
   }
 ];
